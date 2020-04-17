@@ -25,16 +25,24 @@ function displayResults(responseJson) {
 
   else {
   for (let i = 0; i < responseJson.data.length; i++){
-      
-    $('.results-js').append(
-      `<h3>${responseJson.data[i].fullName}</h3>
-      <p>${responseJson.data[i].description}</p>
-      <a class="link result" href="${responseJson.data[i].url}">Visit the website!</a>
-      <p>Address:</p>
-      <p>${responseJson.data[i].addresses[i].line1} ${responseJson.data[i].addresses[i].line2} ${responseJson.data[i].addresses[i].line3}</p>
-      <p>${responseJson.data[i].addresses[i].city}, ${responseJson.data[i].addresses[i].stateCode} ${responseJson.data[i].addresses[i].postalCode}</p>
-      <hr>`
-    )};
+    if (responseJson.data[i].addresses.length == responseJson.data.length) {
+      $('.results-js').append(
+        `<h3>${responseJson.data[i].fullName}</h3>
+        <p>${responseJson.data[i].description}</p>
+        <a class="link result" href="${responseJson.data[i].url}">Visit the website!</a>
+        <p>Address:</p>
+        <p>${responseJson.data[i].addresses[i].line1} ${responseJson.data[i].addresses[i].line2} ${responseJson.data[i].addresses[i].line3}</p>
+        <p>${responseJson.data[i].addresses[i].city}, ${responseJson.data[i].addresses[i].stateCode} ${responseJson.data[i].addresses[i].postalCode}</p>
+        <hr>`
+      )}
+    else {
+      $('.results-js').append(
+        `<h3>${responseJson.data[i].fullName}</h3>
+        <p>${responseJson.data[i].description}</p>
+        <a class="link result" href="${responseJson.data[i].url}">Visit the website!</a>
+        <hr>`)
+      }
+  };
   }
   //display the results section  
   $('.results').removeClass('hidden');
