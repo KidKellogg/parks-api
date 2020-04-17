@@ -25,14 +25,14 @@ function displayResults(responseJson) {
 
   else {
   for (let i = 0; i < responseJson.data.length; i++){
-    if (responseJson.data[i].addresses.length == responseJson.data.length) {
+    if (responseJson.data[i].addresses.length > 0) {
       $('.results-js').append(
         `<h3>${responseJson.data[i].fullName}</h3>
         <p>${responseJson.data[i].description}</p>
         <a class="link result" href="${responseJson.data[i].url}">Visit the website!</a>
         <p>Address:</p>
-        <p>${responseJson.data[i].addresses[i].line1} ${responseJson.data[i].addresses[i].line2} ${responseJson.data[i].addresses[i].line3}</p>
-        <p>${responseJson.data[i].addresses[i].city}, ${responseJson.data[i].addresses[i].stateCode} ${responseJson.data[i].addresses[i].postalCode}</p>
+        <p>${responseJson.data[i].addresses[1].line1} ${responseJson.data[i].addresses[1].line2} ${responseJson.data[i].addresses[1].line3}</p>
+        <p>${responseJson.data[i].addresses[1].city}, ${responseJson.data[i].addresses[1].stateCode} ${responseJson.data[i].addresses[1].postalCode}</p>
         <hr>`
       )}
     else {
